@@ -1,0 +1,5 @@
+name = "medium-clone"
+compatibility_date = "2024-03-07"
+[vars]
+DATABASE_URL="prisma connection pool string"
+JWT_SECRET="randomstring"
