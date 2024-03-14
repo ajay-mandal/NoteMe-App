@@ -27,5 +27,3 @@ export default function Signup() {
 
     )
 }
-
-const revalidate = 1;
