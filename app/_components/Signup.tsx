@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { SignupType } from "@/zod/validator"
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -35,9 +35,13 @@ export default function SignUp_Component({imageURL}: {imageURL: string}){
         return;
       }
       try {
-        await axios.post(`${BACKEND_URL}/signup`, postInputs);
-        toast("Sign up Successfully", { position: "bottom-center", className: "max-w-fit" });
-        navigate.push("/signin");
+        const response = await axios.post(`${BACKEND_URL}/signup`, postInputs);
+        const jwt = response.data.jwt;
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localStorage.setItem("token", jwt);
+          toast("Sign up Successfully", {position:"bottom-center",className:"max-w-fit" })
+          navigate.push("/blogs");
+        }
       } catch (error) {
         toast("Email already used", { position: "bottom-center", className: "max-w-fit" });
       }

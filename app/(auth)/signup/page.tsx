@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { Quote } from "@/app/_components/Quote";
 import SignUp_Component from "@/app/_components/Signup";
 export default function Signup() {
@@ -26,3 +27,5 @@ export default function Signup() {
 
     )
 }
+
+const revalidate = 1;
